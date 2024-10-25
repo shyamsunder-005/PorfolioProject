@@ -1,0 +1,171 @@
+import * as React from 'react';
+import { styled } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import "../resources/css/projects.css";
+import cplus from "../resources/images/c++.png";
+import  c from "../resources/images/c.png";
+import GitHubIcon from '@mui/icons-material/GitHub';
+
+const ExpandMore = styled((props) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  marginLeft: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
+  transform: expand ? 'rotate(180deg)' : 'rotate(0deg)',
+}));
+
+
+const items = [
+  {
+    title: "C++ Project",
+    subheader: "Using Object Oriented Programming!",
+    description: "Using C++, I built an application used for SFC.",
+    Gitlink:"https://github.com",
+    image:cplus,
+  },
+  {
+    title: "C Project",
+    subheader: "Using Functional Programming!",
+    description: "A application based on Huffman Tree.",
+    Gitlink:"https://github.com",
+    image:c
+  },
+];
+export default function RecipeReviewCards() {
+  const [expandedItems, setExpandedItems] = React.useState(Array(items.length).fill(false));
+  const [showGitIcon, setShowGitIcon] = React.useState(Array(items.length).fill(false)); 
+
+  const handleExpandClick = (index) => {
+    const newExpandedItems = [...expandedItems];
+    newExpandedItems[index] = !newExpandedItems[index];
+    setExpandedItems(newExpandedItems);
+  };
+  const handleSettingsClick = (index) => {
+    const newShowGitIcon = [...showGitIcon];
+    newShowGitIcon[index] = !newShowGitIcon[index]; // Toggle GitHub icon visibility
+    setShowGitIcon(newShowGitIcon);
+  };
+
+  const handleGitRedirect = (url) => {
+    window.open(url, '_blank');
+  };
+
+  return (
+    <div style={{display: 'flex',flexdirection: 'row',columnGap:'26px',justifyContent:'center',marginTop:'100px',fontFamily:"Tangerine-Regular" }}>
+      {items.map((item, index) => (
+        <Card key={index} sx={{ maxWidth: 300 ,bgcolor: '#87CEEB',}}>
+          <CardHeader
+           action={
+            <>
+              <IconButton aria-label="settings" onClick={() => handleSettingsClick(index)}>
+                <MoreVertIcon />
+              </IconButton>
+              {showGitIcon[index] && (
+                <IconButton aria-label="github" onClick={() => handleGitRedirect(items.gitlink)}>
+                  <GitHubIcon />
+                </IconButton>
+              )}
+            </>
+          }
+            title={item.title}
+            subheader={item.subheader}
+          />
+          <CardMedia
+          height="194"
+          component="img"
+          image={item.image}
+      />
+          <CardActions disableSpacing>
+            <ExpandMore
+              expand={expandedItems[index]}
+              onClick={() => handleExpandClick(index)}
+              aria-expanded={expandedItems[index]}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </ExpandMore>
+          </CardActions>
+          <Collapse in={expandedItems[index]} timeout="auto" unmountOnExit>
+            <CardContent>
+              <Typography sx={{ marginBottom: 2 }}>
+                {item.description}
+              </Typography>
+            </CardContent>
+          </Collapse>
+        </Card>
+      ))}
+    </div>
+  );
+}
+ 
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+// import Card from '@mui/material/Card';
+// import CardHeader from '@mui/material/CardHeader';
+// import CardMedia from '@mui/material/CardMedia';
+// import CardContent from '@mui/material/CardContent';
+// import Typography from '@mui/material/Typography';
+// import cplus from "../resources/images/c++.png";
+// import  c from "../resources/images/c.jpeg";
+
+// const Projects = () => {
+//     const [Projects, setProjects] = useState([]);
+//     const [error, setError] = useState(null);
+
+//     useEffect(() => {
+//         // Fetch data from the backend running on port defined in .env or default 7000
+//         axios.get('http://localhost:7000/api/users/projects') // Updated URL to match the new endpoint
+//             .then((response) => {
+//                 setProjects(response.data);  // Set the projects data to state
+//             })
+//             .catch((err) => {
+//                 setError(err.message);  // Handle any error that occurs
+//             });
+//     }, []);
+
+//     if (error) {
+//         return <div>Error: {error}</div>;
+//     }
+
+//     if (!Projects.length) {
+//         return <div>Loading...</div>;
+//     }
+
+//     return (
+//         <div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
+//             {Projects.map((Project, index) => (
+//                 <Card key={index} sx={{ maxWidth: 300 }}>
+//                     <CardHeader
+//                         title={Project.title}  // Use Project.title here
+//                         subheader={Project.subheader}
+//                     />
+//                     <CardMedia
+//                         component="img"
+//                         height="194"
+//                         image={Project.image}
+//                         alt={Project.title}
+//                     />
+//                     <CardContent>
+//                         <Typography>
+//                             {Project.description}
+//                         </Typography>
+//                     </CardContent>
+//                 </Card>
+//             ))}
+//         </div>
+//     );
+// };
+
+// export default Projects;

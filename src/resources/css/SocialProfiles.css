@@ -1,0 +1,98 @@
+.lets_connect_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  font-family: 'ZenDots-regular';
+}
+
+@font-face {
+  font-family: 'ZenDots-regular';
+  src: url(../fonts/ZenDots-Regular.ttf);
+  font-weight: normal;
+  font-style: normal;
+  color: #2C3E50;
+}
+
+.lets_connect_section h2 {
+  font-size: 46px;
+  color: #333;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.stick_follow_icon {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.stick_follow_icon ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.stick_follow_icon ul li {
+  margin-right: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.stick_follow_icon ul li a {
+  text-decoration: none;
+  display: block;
+  color: white;
+  background-color: #333;
+  border-radius: 50%;
+  width: 100px; /* Increased width */
+  height: 100px; /* Increased height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.stick_follow_icon ul li a:hover {
+  background-color: #87CEEB;
+}
+
+.stick_follow_icon ul li a svg {
+  font-size: 50px; /* Increased font-size */
+}
+
+.stick_follow_icon ul li span {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .stick_follow_icon ul li {
+    margin-bottom: 15px;
+  }
+
+  .stick_follow_icon ul li a {
+    width: 60px; /* Adjusted for smaller screens */
+    height: 60px;
+  }
+
+  .stick_follow_icon ul li a svg {
+    font-size: 30px; /* Adjusted for smaller screens */
+  }
+
+  .stick_follow_icon ul li span {
+    font-size: 12px;
+  }
+}
