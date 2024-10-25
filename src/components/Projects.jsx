@@ -12,7 +12,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import "../resources/css/projects.css";
 import cplus from "../resources/images/c++.png";
-import  c from "../resources/images/c.png";
+import c from "../resources/images/c.png";
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 const ExpandMore = styled((props) => {
@@ -26,35 +26,47 @@ const ExpandMore = styled((props) => {
   transform: expand ? 'rotate(180deg)' : 'rotate(0deg)',
 }));
 
+// Custom styled card with hover scaling effect
+const AnimatedCard = styled(Card)({
+  maxWidth: 300,
+  backgroundColor: '#87CEEB',
+  transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+  '&:hover': {
+    transform: 'scale(1.05)',
+    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)',
+  },
+});
 
 const items = [
   {
     title: "C++ Project",
     subheader: "Using Object Oriented Programming!",
     description: "Using C++, I built an application used for SFC.",
-    Gitlink:"https://github.com",
-    image:cplus,
+    Gitlink: "https://github.com",
+    image: cplus,
   },
   {
     title: "C Project",
     subheader: "Using Functional Programming!",
-    description: "A application based on Huffman Tree.",
-    Gitlink:"https://github.com",
-    image:c
+    description: "An application based on Huffman Tree.",
+    Gitlink: "https://github.com",
+    image: c,
   },
 ];
+
 export default function RecipeReviewCards() {
   const [expandedItems, setExpandedItems] = React.useState(Array(items.length).fill(false));
-  const [showGitIcon, setShowGitIcon] = React.useState(Array(items.length).fill(false)); 
+  const [showGitIcon, setShowGitIcon] = React.useState(Array(items.length).fill(false));
 
   const handleExpandClick = (index) => {
     const newExpandedItems = [...expandedItems];
     newExpandedItems[index] = !newExpandedItems[index];
     setExpandedItems(newExpandedItems);
   };
+
   const handleSettingsClick = (index) => {
     const newShowGitIcon = [...showGitIcon];
-    newShowGitIcon[index] = !newShowGitIcon[index]; // Toggle GitHub icon visibility
+    newShowGitIcon[index] = !newShowGitIcon[index];
     setShowGitIcon(newShowGitIcon);
   };
 
@@ -63,30 +75,30 @@ export default function RecipeReviewCards() {
   };
 
   return (
-    <div style={{display: 'flex',flexdirection: 'row',columnGap:'26px',justifyContent:'center',marginTop:'100px',fontFamily:"Tangerine-Regular" }}>
+    <div style={{ display: 'flex', flexDirection: 'row', columnGap: '26px', justifyContent: 'center', marginTop: '100px', fontFamily: "Tangerine-Regular" }}>
       {items.map((item, index) => (
-        <Card key={index} sx={{ maxWidth: 300 ,bgcolor: '#87CEEB',}}>
+        <AnimatedCard key={index}>
           <CardHeader
-           action={
-            <>
-              <IconButton aria-label="settings" onClick={() => handleSettingsClick(index)}>
-                <MoreVertIcon />
-              </IconButton>
-              {showGitIcon[index] && (
-                <IconButton aria-label="github" onClick={() => handleGitRedirect(items.gitlink)}>
-                  <GitHubIcon />
+            action={
+              <>
+                <IconButton aria-label="settings" onClick={() => handleSettingsClick(index)} style={{ transition: 'transform 0.3s' }}>
+                  <MoreVertIcon />
                 </IconButton>
-              )}
-            </>
-          }
+                {showGitIcon[index] && (
+                  <IconButton aria-label="github" onClick={() => handleGitRedirect(item.Gitlink)}>
+                    <GitHubIcon />
+                  </IconButton>
+                )}
+              </>
+            }
             title={item.title}
             subheader={item.subheader}
           />
           <CardMedia
-          height="194"
-          component="img"
-          image={item.image}
-      />
+            component="img"
+            height="194"
+            image={item.image}
+          />
           <CardActions disableSpacing>
             <ExpandMore
               expand={expandedItems[index]}
@@ -104,12 +116,12 @@ export default function RecipeReviewCards() {
               </Typography>
             </CardContent>
           </Collapse>
-        </Card>
+        </AnimatedCard>
       ))}
     </div>
   );
 }
- 
+
 // import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 // import Card from '@mui/material/Card';

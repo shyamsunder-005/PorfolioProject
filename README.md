@@ -86,7 +86,7 @@ root/
 
 - React
 - Material UI
-- Joy UI
+- Ant UI
 - React Router
 - Redux Toolkit
 - Typewriter-effect
