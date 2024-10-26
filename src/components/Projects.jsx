@@ -219,7 +219,7 @@ const Projects = () => {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '16px' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '16px',  justifyContent: 'center', marginTop: '100px', fontFamily: "Tangerine-Regular"}}>
             {projectsData.map((project, index) => (
                 <AnimatedCard key={index}>
                     <CardHeader
