@@ -1,6 +1,6 @@
 # Portfolio Project
 
-This is a portfolio website built using React, Material UI, and Joy UI. It showcases personal projects, social profiles, academic background, and a downloadable resume.
+This is a portfolio website built using React, Material UI, and Ant UI. It showcases personal projects, social profiles, academic background, and a downloadable resume.
 
 ## Table of Contents
 
