@@ -37,6 +37,16 @@
   margin-left:30px;
 }
 
+/* home.css */
+
+.avatar-animated {
+  transition: transform 0.3s ease-in-out;
+}
+
+.avatar-animated:hover {
+  transform: scale(1.05); /* Scales up the avatar slightly */
+}
+
 @keyframes typewriter {
   from {
       width: 0; /* Start with no width */

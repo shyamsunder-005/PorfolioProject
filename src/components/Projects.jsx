@@ -129,22 +129,21 @@ export default function RecipeReviewCards() {
 // import CardMedia from '@mui/material/CardMedia';
 // import CardContent from '@mui/material/CardContent';
 // import Typography from '@mui/material/Typography';
-// import cplus from "../resources/images/c++.png";
-// import  c from "../resources/images/c.jpeg";
-
 // const Projects = () => {
 //     const [Projects, setProjects] = useState([]);
 //     const [error, setError] = useState(null);
 
 //     useEffect(() => {
-//         // Fetch data from the backend running on port defined in .env or default 7000
-//         axios.get('http://localhost:7000/api/users/projects') // Updated URL to match the new endpoint
-//             .then((response) => {
-//                 setProjects(response.data);  // Set the projects data to state
-//             })
-//             .catch((err) => {
-//                 setError(err.message);  // Handle any error that occurs
-//             });
+//        const fetchproject =  async () => {
+
+//        try {
+//         const response = await axios.get('http://localhost:7000/api/users/projects') // Updated URL to match the new endpoint
+//         setProjects(response.data); 
+//       } catch (err) {
+//         setError(err.message); 
+//       }
+//        };
+//       fetchproject();
 //     }, []);
 
 //     if (error) {

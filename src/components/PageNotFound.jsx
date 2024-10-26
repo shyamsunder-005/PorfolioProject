@@ -6,15 +6,16 @@ const PageNotFound = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch user data when the component is mounted
-    axios.get('http://localhost:7000/api/users/get-user-data')
-      .then((response) => {
-        setUserData(response.data);  // Set the fetched user data to state
-      })
-      .catch((err) => {
-        setError(err.message);  // Handle any error that occurs
-      });
-  }, []);  // The empty array ensures the effect runs only once after the component mounts
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get('http://localhost:7000/api/users/get-user-data');
+        setUserData(response.data); 
+      } catch (err) {
+        setError(err.message); 
+      }
+    };
+    fetchUserData();
+  }, []); 
 
   return (
     <div>
